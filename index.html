@@ -1,11 +1,713 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website</title>
+    <meta name="description" content="JAMON JAMON / SCUZI is where the locals go... Local food / Italian restaurant... Amazing wine selection and full bar. Pastas, steaks, seafood and more!">
+    <title>Jamon Jamon | Wine Bar & Grill</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+
+        /* Animated Background Gradient */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animated-gradient {
+            background: linear-gradient(-45deg, #A62626, #1A1A1A, #8B1E1E, #2A2A2A);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        /* Floating particles animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px) rotate(90deg);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-40px) translateX(-10px) rotate(180deg);
+                opacity: 0.3;
+            }
+            75% {
+                transform: translateY(-20px) translateX(10px) rotate(270deg);
+                opacity: 0.6;
+            }
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(166, 38, 38, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        .particle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            right: 15%;
+            top: 40%;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            left: 50%;
+            top: 60%;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(4) {
+            width: 70px;
+            height: 70px;
+            right: 30%;
+            top: 80%;
+            animation-delay: 6s;
+        }
+
+        .particle:nth-child(5) {
+            width: 90px;
+            height: 90px;
+            left: 20%;
+            bottom: 10%;
+            animation-delay: 8s;
+        }
+
+        /* Fade in up animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Pig icon wiggle animation */
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .pig-icon:hover {
+            animation: wiggle 0.5s ease-in-out;
+        }
+
+        /* Navigation transition */
+        .nav-transparent {
+            background-color: rgba(26, 26, 26, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-solid {
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Horizontal scroll gallery */
+        .horizontal-scroll {
+            overflow-x: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #A62626 #F2F2F2;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar-track {
+            background: #F2F2F2;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar-thumb {
+            background: #A62626;
+            border-radius: 4px;
+        }
+
+        /* Menu item hover effect */
+        .menu-item {
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            padding-left: 1rem;
+        }
+
+        .menu-item:hover {
+            border-left-color: #A62626;
+            background-color: rgba(166, 38, 38, 0.05);
+            transform: translateX(10px);
+        }
+
+        /* Button hover effects */
+        .btn-primary {
+            background-color: #A62626;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #A62626;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: #A62626;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(166, 38, 38, 0.2);
+        }
+
+        /* Wine glass animation */
+        @keyframes wine-pour {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(15deg); }
+        }
+
+        .wine-animation {
+            animation: wine-pour 3s ease-in-out infinite;
+        }
+
+        /* Image overlay effect */
+        .image-overlay {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .image-overlay:hover::before {
+            left: 100%;
+        }
+
+        /* Pulse animation for CTA */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Background pattern overlay */
+        .pattern-overlay {
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(166, 38, 38, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(26, 26, 26, 0.05) 0%, transparent 50%);
+        }
+    </style>
 </head>
-<body>
-    <!-- Content will be added here -->
+<body class="bg-[#F2F2F2] text-[#0D0D0D]">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 nav-transparent transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-white text-2xl font-light tracking-wider">JAMÓN JAMÓN</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#story" class="text-white hover:text-[#A62626] transition-colors duration-300 font-light tracking-wide">Our Story</a>
+                    <a href="#menu" class="text-white hover:text-[#A62626] transition-colors duration-300 font-light tracking-wide">Menu</a>
+                    <a href="#events" class="text-white hover:text-[#A62626] transition-colors duration-300 font-light tracking-wide">Events</a>
+                    <a href="#contact" class="text-white hover:text-[#A62626] transition-colors duration-300 font-light tracking-wide">Contact</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#1A1A1A] bg-opacity-95">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#story" class="block px-3 py-2 text-white hover:text-[#A62626] transition-colors duration-300">Our Story</a>
+                <a href="#menu" class="block px-3 py-2 text-white hover:text-[#A62626] transition-colors duration-300">Menu</a>
+                <a href="#events" class="block px-3 py-2 text-white hover:text-[#A62626] transition-colors duration-300">Events</a>
+                <a href="#contact" class="block px-3 py-2 text-white hover:text-[#A62626] transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden animated-gradient">
+        <!-- Floating particles -->
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl text-white mb-6 fade-in-up">
+                JAMÓN JAMÓN
+            </h1>
+            <div class="text-xl md:text-2xl text-white mb-4 fade-in-up delay-1 font-light tracking-wider">
+                Wine Bar & Grill
+            </div>
+            <p class="text-lg md:text-xl text-white mb-12 fade-in-up delay-2 max-w-2xl mx-auto font-light italic">
+                A Story of Passion and Flavor
+            </p>
+            <a href="#contact" class="btn-primary fade-in-up delay-3 pulse-animation">
+                Reserve a Table
+            </a>
+            <div class="mt-12 fade-in-up delay-4">
+                <p class="text-white text-sm tracking-widest">#PIGLOVE</p>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+            <div class="animate-bounce">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="py-24 bg-[#F2F2F2] pattern-overlay">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A] mb-6">Our Story</h2>
+                    <div class="w-20 h-1 bg-[#A62626] mb-8"></div>
+                    <p class="text-lg text-[#595959] mb-6 leading-relaxed">
+                        Born from the passion of Argentinian restaurateur <strong>Sergio Bevilacqua</strong>, Jamón Jamón brings over three decades of gastronomic excellence to San Juan, Puerto Rico.
+                    </p>
+                    <p class="text-lg text-[#595959] mb-6 leading-relaxed">
+                        Our name and spirit are inspired by the iconic Spanish film "Jamón Jamón," starring Penélope Cruz and Javier Bardem—a tribute to passion, culture, and the art of fine dining.
+                    </p>
+                    <p class="text-lg text-[#595959] mb-6 leading-relaxed">
+                        Under the culinary leadership of <strong>Chef Manuel Naula</strong>, we offer a sophisticated fusion of Mediterranean and Italian cuisine, with an emphasis on Spanish tapas and locally-sourced ingredients.
+                    </p>
+                    <p class="text-lg text-[#A62626] font-medium italic">
+                        "Where the locals go for an unforgettable culinary experience."
+                    </p>
+                </div>
+                <div class="reveal image-overlay rounded-lg overflow-hidden shadow-2xl">
+                    <img src="./assets/image_0.jpg" alt="Jamón Jamón Experience" class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Highlights Section -->
+    <section id="menu" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A] mb-6">Our Menu</h2>
+                <div class="w-20 h-1 bg-[#A62626] mx-auto mb-8"></div>
+                <p class="text-lg text-[#595959] max-w-2xl mx-auto">
+                    A carefully curated selection of Mediterranean and Italian cuisine, complemented by an exceptional wine collection.
+                </p>
+            </div>
+
+            <!-- Menu Categories -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <!-- Spanish Tapas -->
+                <div class="reveal bg-[#F2F2F2] p-8 rounded-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-4xl mb-4 wine-animation">🍷</div>
+                    <h3 class="text-2xl md:text-3xl text-[#1A1A1A] mb-4">Spanish Tapas</h3>
+                    <p class="text-[#595959] mb-6">
+                        Authentic small plates celebrating the flavors of Spain, perfect for sharing and exploring.
+                    </p>
+                    <ul class="space-y-3 text-[#595959]">
+                        <li class="menu-item">Jamón Ibérico Selection</li>
+                        <li class="menu-item">Patatas Bravas</li>
+                        <li class="menu-item">Gambas al Ajillo</li>
+                        <li class="menu-item">Chorizo a la Sidra</li>
+                    </ul>
+                </div>
+
+                <!-- Italian Classics -->
+                <div class="reveal bg-[#F2F2F2] p-8 rounded-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-4xl mb-4">🍝</div>
+                    <h3 class="text-2xl md:text-3xl text-[#1A1A1A] mb-4">Italian Classics</h3>
+                    <p class="text-[#595959] mb-6">
+                        Handcrafted pastas and traditional Italian dishes made with the finest ingredients.
+                    </p>
+                    <ul class="space-y-3 text-[#595959]">
+                        <li class="menu-item">Fresh Handmade Pasta</li>
+                        <li class="menu-item">Risotto del Giorno</li>
+                        <li class="menu-item">Osso Buco Milanese</li>
+                        <li class="menu-item">Wood-Fired Pizza</li>
+                    </ul>
+                </div>
+
+                <!-- Signature Dishes -->
+                <div class="reveal bg-[#F2F2F2] p-8 rounded-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-4xl mb-4">🥩</div>
+                    <h3 class="text-2xl md:text-3xl text-[#1A1A1A] mb-4">Premium Cuts</h3>
+                    <p class="text-[#595959] mb-6">
+                        Expertly grilled steaks and seafood, showcasing our dedication to quality and flavor.
+                    </p>
+                    <ul class="space-y-3 text-[#595959]">
+                        <li class="menu-item">Argentinian Ribeye</li>
+                        <li class="menu-item">Mediterranean Sea Bass</li>
+                        <li class="menu-item">Grilled Octopus</li>
+                        <li class="menu-item">Chef's Special Pork</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Wine Selection Highlight -->
+            <div class="reveal bg-[#1A1A1A] text-white p-12 rounded-lg text-center">
+                <h3 class="text-3xl md:text-4xl mb-6">Amazing Wine Selection</h3>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-8">
+                    Explore our carefully curated wine list featuring exceptional selections from Spain, Italy, Argentina, and beyond. Our sommelier is always available to recommend the perfect pairing for your meal.
+                </p>
+                <div class="flex justify-center space-x-8 text-sm tracking-wider">
+                    <span>🍷 Spanish Reds</span>
+                    <span>🥂 Italian Whites</span>
+                    <span>🍾 Argentine Malbec</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Private Events Section -->
+    <section id="events" class="py-24 bg-[#F2F2F2] pattern-overlay">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A] mb-6">Private Events</h2>
+                    <div class="w-20 h-1 bg-[#A62626] mb-8"></div>
+                    <p class="text-lg text-[#595959] mb-6 leading-relaxed">
+                        Host your next celebration in our intimate and sophisticated space. Perfect for corporate gatherings, wine tastings, birthday celebrations, and special occasions.
+                    </p>
+                    <ul class="space-y-4 text-[#595959] mb-8">
+                        <li class="flex items-start">
+                            <span class="text-[#A62626] mr-3 text-xl">✓</span>
+                            <span>Customized menus tailored to your event</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#A62626] mr-3 text-xl">✓</span>
+                            <span>Expert wine pairing recommendations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#A62626] mr-3 text-xl">✓</span>
+                            <span>Private dining spaces available</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#A62626] mr-3 text-xl">✓</span>
+                            <span>Professional event coordination</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="reveal">
+                    <div class="bg-white p-8 rounded-lg shadow-xl">
+                        <h3 class="text-2xl md:text-3xl text-[#1A1A1A] mb-6">Event Inquiry</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-[#595959] mb-2">Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-[#A62626] transition-colors" placeholder="Your name">
+                            </div>
+                            <div>
+                                <label class="block text-[#595959] mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-[#A62626] transition-colors" placeholder="your@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-[#595959] mb-2">Phone</label>
+                                <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-[#A62626] transition-colors" placeholder="(787) 000-0000">
+                            </div>
+                            <div>
+                                <label class="block text-[#595959] mb-2">Event Date</label>
+                                <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-[#A62626] transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-[#595959] mb-2">Number of Guests</label>
+                                <input type="number" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-[#A62626] transition-colors" placeholder="20">
+                            </div>
+                            <div>
+                                <label class="block text-[#595959] mb-2">Message</label>
+                                <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:border-[#A62626] transition-colors" placeholder="Tell us about your event..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full text-center">
+                                Send Inquiry
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A] mb-6">Visit Us</h2>
+                <div class="w-20 h-1 bg-[#A62626] mx-auto mb-8"></div>
+                <p class="text-lg text-[#595959] max-w-2xl mx-auto">
+                    Join us for an unforgettable dining experience in the heart of San Juan.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Location -->
+                <div class="reveal text-center p-8 bg-[#F2F2F2] rounded-lg hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-4xl mb-4 text-[#A62626]">📍</div>
+                    <h3 class="text-xl font-medium text-[#1A1A1A] mb-3">Location</h3>
+                    <p class="text-[#595959]">
+                        San Juan<br>
+                        Puerto Rico
+                    </p>
+                </div>
+
+                <!-- Phone -->
+                <div class="reveal text-center p-8 bg-[#F2F2F2] rounded-lg hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-4xl mb-4 text-[#A62626]">📞</div>
+                    <h3 class="text-xl font-medium text-[#1A1A1A] mb-3">Phone</h3>
+                    <a href="tel:7879461777" class="text-[#595959] hover:text-[#A62626] transition-colors">
+                        787-946-1777
+                    </a>
+                </div>
+
+                <!-- Email -->
+                <div class="reveal text-center p-8 bg-[#F2F2F2] rounded-lg hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-4xl mb-4 text-[#A62626]">✉️</div>
+                    <h3 class="text-xl font-medium text-[#1A1A1A] mb-3">Email</h3>
+                    <a href="mailto:jamonjamon.info@gmail.com" class="text-[#595959] hover:text-[#A62626] transition-colors break-all">
+                        jamonjamon.info@gmail.com
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="reveal text-center mb-12">
+                <h3 class="text-2xl md:text-3xl text-[#1A1A1A] mb-6">Hours</h3>
+                <div class="inline-block text-left">
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-2 text-[#595959]">
+                        <span class="font-medium">Monday - Thursday:</span>
+                        <span>5:00 PM - 10:00 PM</span>
+                        <span class="font-medium">Friday - Saturday:</span>
+                        <span>5:00 PM - 11:00 PM</span>
+                        <span class="font-medium">Sunday:</span>
+                        <span>4:00 PM - 9:00 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1A1A1A] text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <!-- Brand -->
+                <div>
+                    <h3 class="text-2xl mb-4 font-light tracking-wider">JAMÓN JAMÓN</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Where passion meets flavor. A fusion of Mediterranean and Italian cuisine in the heart of San Juan.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg mb-4 font-medium">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#story" class="hover:text-[#A62626] transition-colors">Our Story</a></li>
+                        <li><a href="#menu" class="hover:text-[#A62626] transition-colors">Menu</a></li>
+                        <li><a href="#events" class="hover:text-[#A62626] transition-colors">Private Events</a></li>
+                        <li><a href="#contact" class="hover:text-[#A62626] transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media -->
+                <div>
+                    <h4 class="text-lg mb-4 font-medium">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/jamonjamonpr/" target="_blank" class="w-10 h-10 bg-[#595959] rounded-full flex items-center justify-center hover:bg-[#A62626] transition-colors">
+                            <span class="text-xl">f</span>
+                        </a>
+                        <a href="https://www.instagram.com/jamonjamonpr/" target="_blank" class="w-10 h-10 bg-[#595959] rounded-full flex items-center justify-center hover:bg-[#A62626] transition-colors">
+                            <span class="text-xl">📷</span>
+                        </a>
+                    </div>
+                    <div class="mt-6 pig-icon cursor-pointer inline-block">
+                        <span class="text-5xl">🐖</span>
+                        <p class="text-sm text-gray-400 mt-2">#PIGLOVE</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    &copy; 2025 Jamón Jamón Wine Bar & Grill. All rights reserved.
+                </p>
+                <p class="text-gray-500 text-xs mt-2 italic">
+                    Inspired by the film "Jamón Jamón" • Crafted with passion in San Juan, Puerto Rico
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.remove('nav-transparent');
+                navbar.classList.add('nav-solid');
+            } else {
+                navbar.classList.remove('nav-solid');
+                navbar.classList.add('nav-transparent');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        function checkReveal() {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        checkReveal(); // Check on load
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling
+        const eventForm = document.querySelector('form');
+        if (eventForm) {
+            eventForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your inquiry! We will contact you shortly to discuss your event details.');
+                eventForm.reset();
+            });
+        }
+
+        // Add entrance animation to hero elements
+        window.addEventListener('load', function() {
+            const heroElements = document.querySelectorAll('.fade-in-up');
+            heroElements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                }, index * 200);
+            });
+        });
+    </script>
 </body>
 </html>
